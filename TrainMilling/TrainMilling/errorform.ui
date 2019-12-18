@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ErrorFormUi</class>
+ <widget class="SlGfwDialogForm" name="ErrorFormUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>599</width>
+    <height>375</height>
+   </rect>
+  </property>
+  <widget class="SlGfwLabel" name="TodayLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>23</y>
+     <width>171</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Siemens AD CH Simplified</family>
+     <pointsize>-1</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string>background-color: rgb(255, 255, 0)</string>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="text">
+    <string>今日故障</string>
+   </property>
+  </widget>
+  <widget class="SlGfwTreeWidget" name="m_pTreeWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>64</y>
+     <width>555</width>
+     <height>310</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCalendarWidget" name="calendarWidget">
+   <property name="geometry">
+    <rect>
+     <x>327</x>
+     <y>220</y>
+     <width>232</width>
+     <height>148</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="SlGfwLabel" name="HistoryLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>23</y>
+     <width>171</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Siemens AD CH Simplified</family>
+     <pointsize>-1</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string>background-color: rgb(255, 255, 0)</string>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="text">
+    <string>历史故障</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SlGfwDialogForm</class>
+   <extends>QWidget</extends>
+   <header>slgfwdialogform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwLabel</class>
+   <extends>QFrame</extends>
+   <header>slgfwlabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwTreeWidget</class>
+   <extends>SlGfwTreeView</extends>
+   <header>slgfwtreewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwTreeView</class>
+   <extends>QFrame</extends>
+   <header>slgfwtreeview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE CONFIGURATION>
+<CONFIGURATION>
+  <OnlineHelpFiles>
+    <trainmilling_help>
+      <EntriesFile value="trainmilling_help.xml" type="QString"/>
+    </trainmilling_help>
+  </OnlineHelpFiles>
+</CONFIGURATION>

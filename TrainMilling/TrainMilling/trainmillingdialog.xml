@@ -1,0 +1,754 @@
+<!DOCTYPE HMI_DIALOG_CONFIGURATION>
+<!--
+<DIALOGUI 
+  defaultscreen="MainScreen" 
+  screenlayout="trainmillingscreenlayout.TrainMillingScreenLayout" 
+  panellayout="StandardLayout" 
+  textfile="trainmillingdialog" 
+  textcontext="TrainMillingdialog"
+  >
+  -->
+
+<DIALOGUI
+  defaultscreen="MainScreen"
+  screenlayout="slstandardscreenlayout.SlStandardScreenLayout"
+  panellayout="StandardLayout"
+  textfile="trainmillingdialog"
+  textcontext="TrainMillingdialog"
+  >
+  <IMPORT file="Y:/gui/dialogs/common/slgfwcommon_incl.xml" screen="SlHlpBrowserScreen" />
+  <IMPORT file="Y:/gui/dialogs/common/slgfwcommon_incl.xml" screen="SlHlpFullScreen" />
+  <IMPORT file="Y:/gui/dialogs/common/slgfwcommon_incl.xml" screen="SlHlpSearchScreen" />
+
+  <MENU name="MainMenu" softkeybar="hu">
+	  <SOFTKEY position="1">
+			<PROPERTY name="textID" type="QString">主页</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="MainScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	  <SOFTKEY position="2">
+			<PROPERTY name="textID" type="QString">作业参数</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="ParameterScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	  <SOFTKEY position="3">
+			<PROPERTY name="textID" type="QString">轨廓扫描</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="ScanScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	  <SOFTKEY position="4">
+			<PROPERTY name="textID" type="QString">作业状态</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="StatusScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	  <SOFTKEY position="5">
+			<PROPERTY name="textID" type="QString">系统参数</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="SystemScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+    <SOFTKEY position="6">
+      <PROPERTY name="textID" type="QString">检修调试</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+        <SCREEN name="DeviceRepairSreen" />
+      </NAVIGATION>
+    </SOFTKEY>
+    <SOFTKEY position="7">
+			<PROPERTY name="textID" type="QString">故障信息</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="ErrorScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	  <SOFTKEY position="8">
+			<PROPERTY name="textID" type="QString">作业记录</PROPERTY>
+      <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+      <NAVIGATION target="screen">
+				<SCREEN name="RecordScreen" />
+			</NAVIGATION>
+	  </SOFTKEY>
+	</MENU>
+  
+ <!--The 1st Screen 主页-->
+  <SCREEN name="MainScreen">
+    <FORM implementation="TrainMilling.MainForm" name="MainForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/MainScreen.html"/>
+ 	  <MENU ref="MainMenu" />
+    <MENU name="MainVr" softkeybar="vr">
+      <SOFTKEY position="1">
+        <PROPERTY name="textID" type="QString">列车启动</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Start" />
+      </SOFTKEY>
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">列车停止</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Stop" />
+      </SOFTKEY>  
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">软件手册</PROPERTY>
+        <FUNCTION name="OperateManual" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">操作说明</PROPERTY>
+        <FUNCTION name="OperateNotice" />
+      </SOFTKEY>
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString">登录</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Login" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">注销</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Logoff" />
+      </SOFTKEY>
+      <!--<SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">设置速度</PROPERTY>
+        <FUNCTION name="SettingSpeed" />
+      </SOFTKEY>-->
+    </MENU>
+	  <RECALL />
+  </SCREEN>
+
+  <!--The 1-1st OperateManualScreen-->
+  <SCREEN name="OperateManualScreen">
+    <FORM implementation="TrainMilling.OperateManualForm" name="OperateManualForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/index.html"/>
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">下一页</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="NextPage" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">上一页</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="PreviousPage" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="MainScreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 1-2nd Screen-->
+  <SCREEN name="OperateNoticeSreen">
+    <FORM implementation="TrainMilling.OperateNoticeForm" name="OperateNoticeForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/index.html"/>
+    <MENU name="OperateNoticeVr" softkeybar="vr">
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="MainScreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 2nd Screen 作业参数-->
+  <SCREEN name="ParameterScreen">
+    <FORM implementation="TrainMilling.ParameterForm" name="ParameterForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/ParameterScreen.html"/>
+ 	  <MENU ref="MainMenu" />
+    <MENU name="ParameterVr" softkeybar="vr">
+       <SOFTKEY position="2">
+          <PROPERTY name="textID" type="QString">车速+</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="TrainSpeedPlus" />
+       </SOFTKEY>
+       <SOFTKEY position="3">
+          <PROPERTY name="textID" type="QString">车速-</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="TrainSpeedMinus" />
+       </SOFTKEY>
+       <SOFTKEY position="4">
+          <PROPERTY name="textID" type="QString">高低速选择</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="AxisSpeedSelect" />
+       </SOFTKEY>
+       <SOFTKEY position="5">
+          <PROPERTY name="textID" type="QString">车辆组合  选择</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="MillingModuleSelect" />
+       </SOFTKEY>
+      <SOFTKEY position="6">
+          <PROPERTY name="textID" type="QString">恒功率铣削选择</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="PowerControlSelect" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+          <PROPERTY name="textID" type="QString">保存参数</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="SaveParameter" />
+        </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 3rd Screen 轨廓扫描-->
+  <SCREEN name="ScanScreen">
+    <FORM implementation="TrainMilling.ScanForm" name="ScanForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/ScanScreen.html"/>
+ 	  <MENU ref="MainMenu" />
+    <MENU name="ScanVr" softkeybar="vr">  
+      <!--
+      <TOGGLESOFTKEY position="1">
+        <PROFILE name="initialPosition">
+          <PROPERTY name="textID" type="QString">开始扫描</PROPERTY>
+          <FUNCTION name="SatrtScan" />
+        </PROFILE>
+        <PROFILE name="workPosition">
+          <PROPERTY name="textID" type="QString">停止扫描</PROPERTY>
+          <FUNCTION name="StopScan" />
+        </PROFILE>
+      </TOGGLESOFTKEY>
+      -->
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">轨道切换</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SwitchScanner" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <!--<PROPERTY name="textID" type="QString">增大</PROPERTY>-->
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <PROPERTY name="pictureAlignment" type="Alignment">AlignCenter</PROPERTY>
+        <PROPERTY name="picture" type="QPixmap">sk_more_menu_txt.PNG</PROPERTY>
+        <FUNCTION name="Increase" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <!--<PROPERTY name="textID" type="QString">减小</PROPERTY>-->
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <PROPERTY name="pictureAlignment" type="Alignment">AlignCenter</PROPERTY>
+        <PROPERTY name="picture" type="QPixmap">sk_back_menu_txt.PNG</PROPERTY>
+        <FUNCTION name="Decrease" />
+      </SOFTKEY>
+      <SOFTKEY_MORE position="5">
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="QuickIncrease" />
+      </SOFTKEY_MORE>
+      <SOFTKEY_BACK position="6">
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="QuickDecrease" />
+      </SOFTKEY_BACK>
+      <!--
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">增大</PROPERTY>
+         <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Increase" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">减小</PROPERTY>
+         <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Decrease" />
+      </SOFTKEY>      
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">快速增大</PROPERTY>
+         <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="QuickIncrease" />
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">快速减小</PROPERTY>
+         <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="QuickDecrease" />
+      </SOFTKEY>  
+      -->
+      <!--
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString">弯直道扫描选择</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="ChangeScannerMode" />
+      </SOFTKEY>
+      -->
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">保存</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Save" />
+      </SOFTKEY>
+    </MENU>
+	  <RECALL />
+  </SCREEN>
+
+  <!--The 4th Screen-->
+  <SCREEN name="StatusScreen">
+    <FORM implementation="TrainMilling.StatusForm" name="StatusForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/StatusScreen.html"/>
+ 	  <MENU ref="MainMenu" />
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEY position="1">
+        <PROPERTY name="textID" type="QString">输入量</PROPERTY>
+        <FUNCTION name="InputState" />
+      </SOFTKEY>
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">输出量</PROPERTY>
+        <FUNCTION name="OutputState" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">液压状态</PROPERTY>
+        <FUNCTION name="HydraulicState" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">集屑状态</PROPERTY>
+        <FUNCTION name="CollectorBinState" />
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">打磨装置</PROPERTY>
+        <FUNCTION name="GrindState" />
+      </SOFTKEY>
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString"> 测速轮和 锁定状态</PROPERTY>
+        <FUNCTION name="SMWAndLockState" />
+      </SOFTKEY>
+      <!--<SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">转向架</PROPERTY>
+        <FUNCTION name="BogyState" />
+      </SOFTKEY>-->
+    </MENU>   
+	  <RECALL />
+  </SCREEN>
+
+  <!--The 4-1th Screen-->
+  <SCREEN name="StatusListScreen">
+    <FORM implementation="TrainMilling.StatusListForm" name="StatusListForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/StatusListScreen.html"/>
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEY position="1">
+        <PROPERTY name="textID" type="QString">输入量</PROPERTY>
+        <FUNCTION name="InputState" />
+      </SOFTKEY>
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">输出量</PROPERTY>
+        <FUNCTION name="OutputState" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">液压状态</PROPERTY>
+        <FUNCTION name="HydraulicState" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">集屑状态</PROPERTY>
+        <FUNCTION name="CollectorBinState" />
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">打磨装置</PROPERTY>
+        <FUNCTION name="GrindState" />
+      </SOFTKEY>
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString"> 测速轮和 锁定状态</PROPERTY>
+        <FUNCTION name="SMWAndLockState" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">转向架</PROPERTY>
+        <FUNCTION name="BogyState" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="StatusScreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+  
+  <!--The 5th Screen 系统参数-->
+  <SCREEN name="SystemScreen">
+    <FORM implementation="TrainMilling.SystemForm" name="SystemForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/SystemScreen.html"/>
+  	<MENU ref="MainMenu" />
+    <MENU name="SystemVr" softkeybar="vr">
+      <!--
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString">检修模式</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="DeviceRepairSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      -->
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">保存参数</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SaveParameter" />
+      </SOFTKEY>
+    </MENU>    
+	  <RECALL />
+  </SCREEN>
+
+  <!--The 6th Screen 检修模式--> <!--ligy 20191205 add-->
+  <SCREEN name="DeviceRepairSreen"> 
+    <FORM implementation="TrainMilling.DeviceRepair" name="DeviceRepair" formpanel="FullForm"
+          helpdocument="trainmilling_help/DeviceRepairSreen.html"/>
+    <MENU ref="MainMenu" />
+    <MENU name="DeviceRepairVr" softkeybar="vr">
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">检修模式  登录</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="RepairLogin" />
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">调试模式  登录</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DebugLogin" />
+        <!--<NAVIGATION target="screen">
+          <SCREEN name="DebugModeSreen" />
+        </NAVIGATION>-->
+      </SOFTKEY>
+      <!--<SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">刀盘对刀</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="RailCalibSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString"> 传感器及 软件靴设置</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="CPOffsetSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString">电机软限位</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="SoftLimitSreen" />
+        </NAVIGATION>
+      </SOFTKEY>-->
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">检修模式  退出</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="RepairLogoff" />
+      </SOFTKEY>
+      <!--
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="SystemScreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      -->
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 6_1th Screen 检修模式-->
+  <!--ligy 20191205 add-->
+  <SCREEN name="DebugModeSreen">
+    <FORM implementation="TrainMilling.DebugModeForm" name="DebugModeForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/DeviceRepairSreen.html"/>
+    <MENU ref="MainMenu" />
+    <MENU name="DebugVr" softkeybar="vr">
+      <!--<SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">调试模式  登录</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DebugLogin" />
+      </SOFTKEY>-->
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">刀盘对刀</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="RailCalibSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString"> 传感器及 软件靴设置</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="CPOffsetSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString">电机软限位</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="SoftLimitSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">调试模式  退出</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DebugLogoff" />
+      </SOFTKEY>
+  
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  
+  <!--The 6-1th Screen 刀盘对刀-->
+  <SCREEN name="RailCalibSreen">
+    <FORM implementation="TrainMilling.RailCalibForm" name="RailCalibForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/RailCalibSreen.html"/>
+    <MENU name="RailCalibVr" softkeybar="vr">
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString"> 静态参数 保存</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="StaticSave" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString"> 动态参数 保存</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DynamicSave" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="DebugModeSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 6-2th Screen 传感器及 软件靴设置-->
+  <SCREEN name="CPOffsetSreen">
+    <FORM implementation="TrainMilling.CPOffsetForm" name="CPOffsetForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/CPOffsetSreen.html"/>
+    <MENU name="CPOffsetVr" softkeybar="vr">
+      <SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">横向          低通滤波</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="H_LowPassFilter" />
+      </SOFTKEY>
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">垂向          低通滤波</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="V_LowPassFilter" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">保存参数</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SaveParameter" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="DebugModeSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+  
+  <!--The 6-3th Screen 电机软限位-->
+  <SCREEN name="SoftLimitSreen">
+    <FORM implementation="TrainMilling.SoftLimitForm" name="SoftLimitForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/SoftLimitSreen.html"/>
+    <MENU name="SoftLimitVr" softkeybar="vr">
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">保存参数</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SaveParameter" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="DebugModeSreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN> 
+  
+  <!--The 7th Screen 故障信息-->
+  <SCREEN name="ErrorScreen">
+    <FORM implementation="TrainMilling.ErrorForm" name="ErrorForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/ErrorScreen.html"/>
+ 	  <MENU ref="MainMenu" />
+    <MENU name="ErrorVr" softkeybar="vr">
+      <TOGGLESOFTKEY position="6">
+        <PROFILE name="workPosition">
+          <PROPERTY name="textID" type="QString">历史故障</PROPERTY>
+          <FUNCTION name="HistoryAlarm" />
+        </PROFILE>
+        <PROFILE name="initialPosition">
+          <PROPERTY name="textID" type="QString">今日故障</PROPERTY>
+          <FUNCTION name="TodayAlarm" />        
+        </PROFILE>
+      </TOGGLESOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">日期选择</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DateSelected" args="" />
+      </SOFTKEY>
+    </MENU> 
+	  <RECALL />
+  </SCREEN>
+
+  <!--The 8th Screen-->
+  <SCREEN name="RecordScreen">
+    <FORM implementation="TrainMilling.RecordForm" name="RecordForm" formpanel="FullForm" 
+          helpdocument="trainmilling_help/RecordScreen.html"/>
+  	<MENU ref="MainMenu" />
+
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEY position="1">
+        <PROPERTY name="textID" type="QString">里程清零</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="ZeroMileage" />
+      </SOFTKEY>
+      <!--<SOFTKEY position="2">
+        <PROPERTY name="textID" type="QString">全部清零</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="AllReset" />
+      </SOFTKEY>-->
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString">导出记录</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="ExportRecord" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString"> 左侧横向 数据</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="LH_Data" />
+      </SOFTKEY>
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString"> 左侧垂向 数据</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="LV_Data" />
+      </SOFTKEY>
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString"> 右侧横向 数据</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="RH_Data" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString"> 右侧垂向 数据</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="RV_Data" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">用户管理</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="UserManagement" />
+      </SOFTKEY>
+    </MENU>
+    
+    <RECALL />
+  </SCREEN>
+
+  <!--The 8-1th Screen-->
+  <SCREEN name="UserManagerSreen">
+    <FORM implementation="TrainMilling.UserManagerForm" name="UserManagerForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/UserManagerSreen.html"/>
+    <MENU name="UserManagerVr" softkeybar="vr">
+      <SOFTKEY position="3">
+        <PROPERTY name="textID" type="QString"> 用户密码 修改</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="UserPwd" />
+      </SOFTKEY>
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString"> 检修密码 修改</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="RepairPwd" />
+      </SOFTKEY>
+      <!--
+      <SOFTKEY position="5">
+        <PROPERTY name="textID" type="QString"> 调试密码 修改</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="DebugPwd" />
+      </SOFTKEY>
+      -->
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">保存密码</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SavePassword" />
+      </SOFTKEY>
+      <SOFTKEY position="8">
+        <PROPERTY name="textID" type="QString">返回</PROPERTY>
+        <NAVIGATION target="screen">
+          <SCREEN name="RecordScreen" />
+        </NAVIGATION>
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 9th ConfirmScreen-->
+  <SCREEN name="ConfirmScreen">
+    <FORM implementation="TrainMilling.ConfirmForm" name="ConfirmForm" formpanel="FullForm"/>
+    <MENU name="ConfirmVr" softkeybar="vr">
+      <SOFTKEY position="6">
+        <PROPERTY name="textID" type="QString">是</PROPERTY>
+        <FUNCTION name="Yes" />
+      </SOFTKEY>
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">否</PROPERTY>
+        <FUNCTION name="No" />
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+
+  <!--The 10th Screen-->
+  <SCREEN name="DebugScreen">
+    <FORM implementation="TrainMilling.DebugForm" name="DebugForm" formpanel="FullForm"
+          helpdocument="trainmilling_help/DebugScreen.html"/>
+    <MENU ref="MainMenu" />
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEY position="4">
+        <PROPERTY name="textID" type="QString">确定</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="Confirm" />
+      </SOFTKEY>
+
+      <SOFTKEYGROUP name="timer" selectedsoftkey="6" toggleselectedsoftkey="false">
+        <SOFTKEY position="5">
+          <PROPERTY name="textID" type="QString">启动远程</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="StartRemoteControl" />
+        </SOFTKEY>
+        <SOFTKEY position="6">
+          <PROPERTY name="textID" type="QString">断开连接</PROPERTY>
+          <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+          <FUNCTION name="StopRemoteControl" />
+        </SOFTKEY>
+      </SOFTKEYGROUP>
+
+      <SOFTKEY position="7">
+        <PROPERTY name="textID" type="QString">恢复设置</PROPERTY>
+        <PROPERTY name="disabledFace" type="SoftKeyDisabledFace">Grayed</PROPERTY>
+        <FUNCTION name="SystemReset" />
+      </SOFTKEY>
+    </MENU>
+    <RECALL />
+  </SCREEN>
+  
+  <!--The 11th Power Screen-->
+  <SCREEN name="PowerScreen">
+    <FORM implementation="TrainMilling.PowerForm" name="PowerForm" formpanel="FullForm"/>
+    <MENU ref="MainMenu" />
+
+    <MENU name="vr" softkeybar="vr">
+      <SOFTKEYGROUP name="timer" selectedsoftkey="4" toggleselectedsoftkey="false">
+        <SOFTKEY position="3">
+          <PROPERTY name="textID" type="QString">Start</PROPERTY>
+          <FUNCTION name="Start" />
+        </SOFTKEY>
+        <SOFTKEY position="4">
+          <PROPERTY name="textID" type="QString">Stop</PROPERTY>
+          <FUNCTION name="Stop" />
+        </SOFTKEY>
+      </SOFTKEYGROUP>
+    </MENU>
+
+    <RECALL />
+  </SCREEN>
+  
+</DIALOGUI>
