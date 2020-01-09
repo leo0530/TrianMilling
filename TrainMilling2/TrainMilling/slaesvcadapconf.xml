@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Configuration of the Solutionline Alarm & Event Service Adapter -->
-<CONFIGURATION>
-  <AlarmTexts>
-    <BaseNames>
-      <MyBaseName type="QString" value="trainmillingeventsource_alarmtext"/>
-    </BaseNames>
-  </AlarmTexts>
-</CONFIGURATION>
