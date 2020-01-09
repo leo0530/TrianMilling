@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HMI_SL_HELP language="en-US">
+  <BOOK ref="index.html"  title="铣磨帮助文档" helpdir="trainmilling_help">
+    <ENTRY ref="MainScreen.html" title="主页帮助" />
+    <ENTRY ref="ParameterScreen.html" title="作业参数" />
+    <ENTRY ref="ScanScreen.html" title="轮廓扫描" />
+    <ENTRY ref="StatusScreen.html" title="作业状态" >
+      <ENTRY ref="StatusListScreen.html" title="信号状态" />
+    </ENTRY>
+    <ENTRY ref="SystemScreen.html" title="系统参数" >
+      <ENTRY ref="DeviceRepairSreen.html" title="装置检修" >	
+		  <ENTRY ref="RailCalibSreen.html" title="刀盘对刀" />
+		  <ENTRY ref="CPOffsetSreen.html" title="切点偏移" />
+		  <!--<ENTRY ref="SoftLimitSreen.html" title="电机软限位" />-->
+	  </ENTRY>
+    </ENTRY>
+    <ENTRY ref="ErrorScreen.html" title="故障信息" />
+    <ENTRY ref="DebugScreen.html" title="调试模式" />
+    <ENTRY ref="RecordScreen.html" title="作业记录" >
+      <ENTRY ref="UserManagerSreen.html" title="用户管理" />
+    </ENTRY>
+  </BOOK>
+</HMI_SL_HELP>

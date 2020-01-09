@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<CONFIGURATION>
+<TrainMillingarea>
+<TextId value="铣削作业" type="QString"/>
+<Picture value="toborlogo.png" type="QString"/>
+</TrainMillingarea>
+</CONFIGURATION>

@@ -458,8 +458,11 @@ void StatusForm::RefreshShineState_PLC( bool bForceFresh  )//ligy 20190928 add ´
 		case PLC_SHINESTATE_UP:
 			ShineStatusLineEdit->setValue(g_pIni->m_strStateShineUp);//´òÄ¥ÉÏÉı
 			break;
+		case PLC_SHINESTATE_ESTOP:
+			ShineStatusLineEdit->setValue(g_pIni->m_strStateShineEmgencyStop);//´òÄ¥¼±Í£
+			break;
 		default:
-			ShineStatusLineEdit->setValue("");
+			ShineStatusLineEdit->setValue("undefine");//´òÄ¥¼±Í£
 			break;
 		}
 	}

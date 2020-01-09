@@ -260,6 +260,7 @@ public:
 	QString m_strStateShineStart;//打磨开始
 	QString m_strStateShineEnd;  //打磨结束
 	QString m_strStateShineUp;   //打磨上升
+	QString m_strStateShineEmgencyStop;   //打磨上升
 };
 
 #endif // OPERATEINI_H_INCLUDED

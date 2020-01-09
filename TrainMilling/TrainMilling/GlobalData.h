@@ -243,6 +243,7 @@ const QString ACCESS_ERROR	      = "errorNr: %1";
 #define PLC_SHINESTATE_START		5
 #define PLC_SHINESTATE_END			6
 #define PLC_SHINESTATE_UP			7
+#define PLC_SHINESTATE_ESTOP		8
 
 #define REPORT_NO_ERR				0x0000
 #define REPORT_1_ERR				0x0001
@@ -771,7 +772,7 @@ public:
 	double			m_RV_CutterProtect;//垂向进刀保护 右
 	void			CutterSoftProtect( int nWorkState );
 public:
-	void			SetPLCWorkState( int nWorkState );
+	void			SetPLCWorkState( int nWorkState );//nWorkState
 	void            SetPLCShineState( int nShineState );//ligy 20190928 add
 	void			SetPCUWorkState( int nWorkState );
 	bool			IsSuddenChange( int nWorkState );

@@ -1,0 +1,1839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SystemFormUi</class>
+ <widget class="SlGfwDialogForm" name="SystemFormUi">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>599</width>
+    <height>377</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::NoFocus</enum>
+  </property>
+  <property name="hmiFontSize">
+   <number>-10</number>
+  </property>
+  <widget class="SlGfwLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>24</y>
+     <width>171</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Siemens AD CH Simplified</family>
+     <pointsize>-1</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string>background-color: rgb(255, 255, 0)</string>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="text">
+    <string>系统参数</string>
+   </property>
+  </widget>
+  <widget class="SlGfwGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>-8</x>
+     <y>65</y>
+     <width>301</width>
+     <height>244</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="hmiFonts">
+    <bool>true</bool>
+   </property>
+   <property name="hmiColors">
+    <bool>true</bool>
+   </property>
+   <property name="navigationMode">
+    <bool>true</bool>
+   </property>
+   <property name="hmiUseBigFont">
+    <bool>false</bool>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <widget class="SlGfwLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>100</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiColors">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="inverseColors">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>左铣削单元</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>27</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>轨距修正</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LH_RailOffsetLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>28</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>28</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LV_RailOffsetLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>58</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>55</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>刀        偏</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>56</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_30">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>87</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_31">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>87</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Y1标定(1)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_32">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>145</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Z1标定(1)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_33">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>145</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LV_CalibPosLineEdit1">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>148</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LH_CalibPosLineEdit1">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>88</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_52">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>175</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LV_CalibPosLineEdit2">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>178</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LH_CalibPosLineEdit2">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>118</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_53">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>117</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_54">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>117</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Y1标定(2)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_55">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>175</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Z1标定(2)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_62">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>205</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>垂向电机</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LV_MotorCalibPosLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>96</x>
+      <y>208</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_63">
+    <property name="geometry">
+     <rect>
+      <x>154</x>
+      <y>205</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="SlGfwGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>65</y>
+     <width>301</width>
+     <height>244</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <widget class="SlGfwLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>0</y>
+      <width>100</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="inverseColors">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>右铣削单元</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>109</x>
+      <y>28</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>轨距修正</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RH_RailOffsetLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>28</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+    <property name="value">
+     <string/>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>241</x>
+      <y>28</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RV_RailOffsetLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>58</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>109</x>
+      <y>56</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>刀        偏</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>241</x>
+      <y>56</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_34">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>145</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_35">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>87</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_36">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>87</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Y2标定(1)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RV_CalibPosLineEdit1">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>148</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_49">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>145</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Z2标定(1)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RH_CalibPosLineEdit1">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>88</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RV_CalibPosLineEdit2">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>178</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_56">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>175</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Z2标定(2)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_57">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>117</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_58">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>175</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RH_CalibPosLineEdit2">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>118</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_59">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>117</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>Y2标定(2)</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="RV_MotorCalibPosLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>183</x>
+      <y>208</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_64">
+    <property name="geometry">
+     <rect>
+      <x>242</x>
+      <y>205</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_65">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>205</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>垂向电机</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="SlGfwGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>179</x>
+     <y>83</y>
+     <width>215</width>
+     <height>215</height>
+    </rect>
+   </property>
+   <property name="mouseTracking">
+    <bool>false</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string/>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <widget class="SlGfwLabel" name="label_37">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>36</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>垂向进给速度</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_38">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>7</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm/min</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="V_RapidMoveSpeedLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>36</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_39">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>7</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>横向进给速度</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_40">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>36</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm/min</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="H_RapidMoveSpeedLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>7</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_41">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>65</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>主轴低速模式</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_42">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>65</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>r/min</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="AxisAngularLowerSpeedLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>65</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_43">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>123</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="OffsetSlopeLengthLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>181</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_44">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>123</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>左测速轮直径</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="L_SMWDiameterLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>123</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_45">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>181</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>偏移顺坡长度</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_46">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>94</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>主轴高速模式</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="AxisAngularHighSpeedLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>94</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_47">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>181</y>
+      <width>41</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_48">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>94</y>
+      <width>40</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>r/min</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="R_SMWDiameterLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>105</x>
+      <y>152</y>
+      <width>51</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_60">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>152</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>mm</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_61">
+    <property name="geometry">
+     <rect>
+      <x>6</x>
+      <y>152</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Siemens AD CH Simplified</family>
+      <pointsize>-1</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>-3</number>
+    </property>
+    <property name="text">
+     <string>右测速轮直径</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="SlGfwGroupBox" name="groupBox_6">
+   <property name="geometry">
+    <rect>
+     <x>-8</x>
+     <y>307</y>
+     <width>301</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <widget class="SlGfwLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="inverseColors">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>峰值功率设置</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>功率</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LiftCutterPowerLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>42</y>
+      <width>51</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_24">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>42</y>
+      <width>31</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>% ×</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="LiftCutterTimeLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>42</y>
+      <width>51</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_25">
+    <property name="geometry">
+     <rect>
+      <x>167</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>时间</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_50">
+    <property name="geometry">
+     <rect>
+      <x>214</x>
+      <y>41</y>
+      <width>31</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>ms</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="SlGfwGroupBox" name="groupBox_7">
+   <property name="geometry">
+    <rect>
+     <x>291</x>
+     <y>307</y>
+     <width>301</width>
+     <height>70</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="hmiFontSize">
+    <number>-5</number>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <widget class="SlGfwLabel" name="label_26">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string>background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="inverseColors">
+     <bool>true</bool>
+    </property>
+    <property name="text">
+     <string>最大功率设置</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>功率</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="EndCuttingPowerLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>42</y>
+      <width>51</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_28">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>42</y>
+      <width>31</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>% ×</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLineEdit" name="EndCuttingTimeLineEdit">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>42</y>
+      <width>51</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="hmiFonts">
+     <bool>true</bool>
+    </property>
+    <property name="hmiFontSize">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_29">
+    <property name="geometry">
+     <rect>
+      <x>169</x>
+      <y>20</y>
+      <width>41</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>时间</string>
+    </property>
+   </widget>
+   <widget class="SlGfwLabel" name="label_51">
+    <property name="geometry">
+     <rect>
+      <x>215</x>
+      <y>42</y>
+      <width>31</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="hmiFontSize">
+     <number>-5</number>
+    </property>
+    <property name="text">
+     <string>ms</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SlGfwDialogForm</class>
+   <extends>QWidget</extends>
+   <header>slgfwdialogform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwGroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>slgfwgroupbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwLabel</class>
+   <extends>QFrame</extends>
+   <header>slgfwlabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SlGfwLineEdit</class>
+   <extends>QFrame</extends>
+   <header>slgfwlineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>LH_RailOffsetLineEdit</tabstop>
+  <tabstop>LV_RailOffsetLineEdit</tabstop>
+  <tabstop>LH_CalibPosLineEdit1</tabstop>
+  <tabstop>LH_CalibPosLineEdit2</tabstop>
+  <tabstop>LV_CalibPosLineEdit1</tabstop>
+  <tabstop>LV_CalibPosLineEdit2</tabstop>
+  <tabstop>RH_RailOffsetLineEdit</tabstop>
+  <tabstop>RV_RailOffsetLineEdit</tabstop>
+  <tabstop>RH_CalibPosLineEdit1</tabstop>
+  <tabstop>RH_CalibPosLineEdit2</tabstop>
+  <tabstop>RV_CalibPosLineEdit1</tabstop>
+  <tabstop>RV_CalibPosLineEdit2</tabstop>
+  <tabstop>H_RapidMoveSpeedLineEdit</tabstop>
+  <tabstop>V_RapidMoveSpeedLineEdit</tabstop>
+  <tabstop>AxisAngularLowerSpeedLineEdit</tabstop>
+  <tabstop>AxisAngularHighSpeedLineEdit</tabstop>
+  <tabstop>L_SMWDiameterLineEdit</tabstop>
+  <tabstop>R_SMWDiameterLineEdit</tabstop>
+  <tabstop>OffsetSlopeLengthLineEdit</tabstop>
+  <tabstop>LiftCutterPowerLineEdit</tabstop>
+  <tabstop>LiftCutterTimeLineEdit</tabstop>
+  <tabstop>EndCuttingPowerLineEdit</tabstop>
+  <tabstop>EndCuttingTimeLineEdit</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

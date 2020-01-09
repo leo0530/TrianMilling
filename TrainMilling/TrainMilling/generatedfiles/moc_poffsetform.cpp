@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'poffsetform.h'
 **
-** Created: Mon Dec 16 11:05:03 2019
+** Created: Wed Jan 8 15:11:26 2020
 **      by: The Qt Meta Object Compiler version 61 (Qt 4.5.2)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -326,6 +326,7 @@
 #define ENTRY_SHINESTATE_START	    "/ShineState/State_StartShine"
 #define ENTRY_SHINESTATE_END	    "/ShineState/State_EndShine"
 #define ENTRY_SHINESTATE_UP	        "/ShineState/State_ShineUp"
+#define ENTRY_SHINESTATE_EMGENCYSTOP	        "/ShineState/State_ShineStop"
 
 OperateIni::OperateIni(void)
 {	
@@ -1001,6 +1002,8 @@ void OperateIni::ReadShineStateParameters()//ligy 20190928 add
 	m_strStateShineEnd = m_pcodec->toUnicode(byteArray);
 	byteArray = m_pconfigIniRead->value(ENTRY_SHINESTATE_UP).toByteArray();
 	m_strStateShineUp = m_pcodec->toUnicode(byteArray);
+	byteArray = m_pconfigIniRead->value(ENTRY_SHINESTATE_EMGENCYSTOP).toByteArray();
+	m_strStateShineEmgencyStop = m_pcodec->toUnicode(byteArray);//´òÄ¥¼±Í£
 }
 void OperateIni::ReadWorkStateParameters()
 {

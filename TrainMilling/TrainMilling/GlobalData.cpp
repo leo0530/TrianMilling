@@ -1873,16 +1873,16 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	return eError;
 }
 
-void GlobalData::SetPLCWorkState( int nShineState )//ligy 20190928 add
-{
-	m_nPrePLCShineState = m_nPLCShineState;
-	m_nPLCShineState = nShineState;
-}
-
-void GlobalData::SetPLCShineState( int nWorkState )
+void GlobalData::SetPLCWorkState( int nWorkState )//ligy 20190928 add
 {
 	m_nPrePLCWorkState = m_nPLCWorkState;
 	m_nPLCWorkState = nWorkState;
+}
+
+void GlobalData::SetPLCShineState( int nShineState )//ligy 20200108 modify
+{
+	m_nPrePLCShineState = m_nPLCShineState;
+	m_nPLCShineState = nShineState;
 }
 
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- Configuration of the Solutionline Alarm & Event Service -->
+<CONFIGURATION>
+  <DataBases>
+    <MyDataBase type="QString" value="trainmillingeventsource_db.hmi"/>
+  </DataBases>
+</CONFIGURATION>
+
