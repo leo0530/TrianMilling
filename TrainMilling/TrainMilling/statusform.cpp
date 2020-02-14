@@ -312,12 +312,12 @@ void StatusForm::RefreshState( )
 	//end of Sensorchoose
 	//-------------------------------------------------------------
 	if(g->m_L_bCollectorBinState)
-		L_CollectorBinLabel->setStyleSheet(szRedStyle);//×ó¼¯Ð¼²Ö ºìµÆ
+		L_CollectorBinLabel->setStyleSheet(szRedStyle);  //×ó¼¯Ð¼²Ö ºìµÆ
 	else
 		L_CollectorBinLabel->setStyleSheet(szGreenStyle);//×ó¼¯Ð¼²Ö ÂÌµÆ
 
 	if(g->m_R_bCollectorBinState)
-		R_CollectorBinLabel->setStyleSheet(szRedStyle);//ÓÒ¼¯Ð¼²Ö ºìµÆ
+		R_CollectorBinLabel->setStyleSheet(szRedStyle);  //ÓÒ¼¯Ð¼²Ö ºìµÆ
 	else
 		R_CollectorBinLabel->setStyleSheet(szGreenStyle);//ÓÒ¼¯Ð¼²Ö ÂÌµÆ
 
@@ -381,6 +381,8 @@ void StatusForm::RefreshWorkState( bool bForceFresh )
 
 void StatusForm::RefreshWorkState_PLC( bool bForceFresh  )
 {
+	g->DataProcessTest_WriteSaveData();//ligy 20200211 add .Ð´ÐèÒª±£´æµÄÊý¾Ýµ½ÎÄ¼þ
+
 	if( (g->m_nPLCWorkState != g->m_nPrePLCWorkState) || bForceFresh)
 	{
 		switch(g->m_nPLCWorkState)

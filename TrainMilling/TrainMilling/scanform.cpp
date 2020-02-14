@@ -512,6 +512,17 @@ void ScanForm::onFunction (const QString& rsFunction,
 			setSoftkeyDisable(6, true);
 			setSoftkeyDisable(7, true);
 		}
+
+		if (bSaveOK)
+		{
+			if (g->m_bIsLogin)//ligy 20200213 add.添加日志 轨廓扫描参数保存
+			{
+				g->m_StreamLog<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh-mm-ss")
+					<<","<<g->m_strNowUserName
+					<<","<< g_pIni->m_strLog_ScanParamSave <<endl;
+				g->m_StreamLog.flush();//ligy 20200213 add.
+			}	
+		}
 		rbHandled = true;
 	}
 	// need to call the base class

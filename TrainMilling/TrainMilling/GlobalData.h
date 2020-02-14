@@ -145,14 +145,14 @@ const QString ACCESS_ERROR	      = "errorNr: %1";
 #define szItem_R_SMWSpeed				"/channel/MachineAxis/actFeedRate[u2,4]"
 
 #define szItem_PLCStatus_Word			"MW33"   //NCU作业阶段状态字
-#define szItem_PLCShineStatus_Word		"MW518"   //打磨状态字
+#define szItem_PLCShineStatus_Word		"MW518"  //打磨状态字
 #define szItem_TrainStart_Bit			"M30.2"  //机车启动标志
 #define szItem_WorkStart_Bit			"M30.5"  //作业开始标志
 #define szItem_WorkStop_Bit				"M30.6"  //作业停止标志
 #define szItem_TrainStop_Bit			"M30.3"  //机车停止标志
 #define szItem_ScanStart_Bit			"M31.0"  //扫描启停标志
 #define szItem_PLCEmergencyStop_Bit		"M32.1"  //紧急提升故障标志
-#define szItem_LoadDown_Bit				"M31.5"					//Reserved!!!
+#define szItem_LoadDown_Bit				"M31.5"	 //Reserved!!!
 
 #define szItem_AlarmWorkStop_Bit		"M31.6"
 
@@ -346,10 +346,10 @@ public:
 	 *about Working Parameters
 	 *--------------------------------------------
 	 */
-	double			m_LH_CutDepth;//横向切深 左铣削单元
-	double			m_LV_CutDepth;//垂向切深 左铣削单元
-	double			m_RH_CutDepth;//横向切深 右铣削单元
-	double			m_RV_CutDepth;//垂向切深 右铣削单元
+	double			m_LH_CutDepth;      //横向切深 左铣削单元
+	double			m_LV_CutDepth;      //垂向切深 左铣削单元
+	double			m_RH_CutDepth;      //横向切深 右铣削单元
+	double			m_RV_CutDepth;      //垂向切深 右铣削单元
 	double			m_LH_CutDepthOffset;//横向切深偏移 左
 	double			m_LV_CutDepthOffset;//垂向切深偏移 左
 	double			m_RH_CutDepthOffset;//横向切深偏移 右
@@ -359,14 +359,14 @@ public:
 	double			m_H_WorkIniPos;     //作业横向初始位
 	double			m_V_WorkIniPos;     //作业横向初始位
 	double			m_DstTrainSpeed;    //车速
-	double			m_DstTrainSpeedDiff;//ligy 20190908 add 速度超差范围
+	double			m_DstTrainSpeedDiff;    //ligy 20190908 add 速度超差范围
 	double			m_DstTrainSpeedDiffTime;//ligy 20190908 add 速度超差监控时间
 	double			m_SlopeLength;      //顺坡长度
 	double			m_HighSpindleSpeed; //切线削速度 高速
 	double			m_LowerSpindleSpeed;//切线削速度 低速
 	bool			m_L_bEnableUnit;
 	bool			m_R_bEnableUnit;
-	bool			m_bHighSpindleSpeed;				//false for lowspeed,high for highspeed
+	bool			m_bHighSpindleSpeed;//false for lowspeed,high for highspeed
 	double			m_CurTrainSpeed;
 	//double		m_AXisSpeed;
 	//bool			m_bAutoMilling;
@@ -397,14 +397,14 @@ public:
 	double			m_RV_SensorCalibPos;			
 	double			m_LowAxisAngularSpeed; //主轴低速模式
 	double			m_HighAxisAngularSpeed;//主轴高速模式
-	double			m_L_SMWDiameter;//左测速轮直径
-	double			m_R_SMWDiameter;//右测速轮直径
+	double			m_L_SMWDiameter;  //左测速轮直径
+	double			m_R_SMWDiameter;  //右测速轮直径
 	double			m_LiftCutterPower;//峰值功率设置 功率
 	double			m_LiftCutterTime; //峰值功率设置 时间
 	double			m_EndCuttingPower;//最大功率设置 功率
 	double			m_EndCuttingTime; //最大功率设置 时间
-	double			m_H_RapidSpeed;//横向快进速度
-	double			m_V_RapidSpeed;//垂向快进速度
+	double			m_H_RapidSpeed;   //横向快进速度
+	double			m_V_RapidSpeed;   //垂向快进速度
 	double			m_OffsetSlopeLength;//偏移顺坡长度
 	double			m_CutterDiameter;
 	/*--------------------------------------------
@@ -486,6 +486,7 @@ public:
 	void			WorkMileageProc();		
 	void			DeviceLockStateProc( );
 	void			DeviceHighStateProc( );
+	bool            isEqualFloat(double a,double b);
 	/*--------------------------------------------
 	 *about Status Parameters
 	 *--------------------------------------------
@@ -521,6 +522,7 @@ public:
 	bool			m_L_bCollectorBinState;//左集屑仓状态
 	bool			m_R_bCollectorBinState;//右集屑仓状态
 	bool			m_bCH1NCState;//通道1NC状态
+	bool			m_bPreBogyState;//刚性支撑标志 前一个状态
 	bool			m_bBogyState;//刚性支撑标志
 	bool			m_bTrainCommState;//机车通讯状态
 	bool			m_bPreTrainCommState;
@@ -546,6 +548,37 @@ public:
 	bool			m_bPreStopTrain;
 	bool			m_bPreStartScan;
 	bool			m_bPreAlarmStopWork;
+
+	//ligy 20200214 add.
+	bool            m_bCurStartTrainSign;          //启动列车标志  I65.0
+	bool            m_bCurStopTrainSign;           //停止列车标志  I65.1
+	bool            m_bCurStartWorkSign;           //开始作业标志  I65.2
+	bool            m_bCurStopWorkSign;            //停止作业标志  I65.3
+	bool            m_bCurDeviceUpSign;            //装置上升标志  I64.0
+	bool            m_bCurDeviceDownSign;          //装置下降标志  I64.1
+	bool            m_bCurHydraulicStartSign;      //液压启动标志  I66.1
+	bool            m_bCurHydraulicStopSign;       //液压停止标志  I66.2
+	bool            m_bCurChipStartSign;           //集屑启动标志  I66.4
+	bool            m_bCurChipStopSign;            //集屑停止标志  I66.5
+	bool            m_bCurSpeedWheelUpSign;        //测速轮上升标志 I66.6
+	bool            m_bCurSpeedWheelDownSign;      //测速轮下降标志 I66.7
+	bool            m_bCurBodySupportSign;         //刚性支撑标志   I67.0
+	bool            m_bCurBodyReleaseSign;         //支撑解除标志   I67.1
+
+	bool            m_bPreStartTrainSign;          //启动列车标志  I65.0  前一状态
+	bool            m_bPreStopTrainSign;           //停止列车标志  I65.1  前一状态
+	bool            m_bPreStartWorkSign;           //开始作业标志  I65.2  前一状态
+	bool            m_bPreStopWorkSign;            //停止作业标志  I65.3  前一状态
+	bool            m_bPreDeviceUpSign;            //装置上升标志  I64.0  前一状态
+	bool            m_bPreDeviceDownSign;          //装置下降标志  I64.1  前一状态
+	bool            m_bPreHydraulicStartSign;      //液压启动标志  I66.1  前一状态
+	bool            m_bPreHydraulicStopSign;       //液压停止标志  I66.2  前一状态
+	bool            m_bPreChipStartSign;           //集屑启动标志  I66.4  前一状态
+	bool            m_bPreChipStopSign;            //集屑停止标志  I66.5  前一状态
+	bool            m_bPreSpeedWheelUpSign;        //测速轮上升标志 I66.6 前一状态
+	bool            m_bPreSpeedWheelDownSign;      //测速轮下降标志 I66.7 前一状态
+	bool            m_bPreBodySupportSign;         //刚性支撑标志   I67.0 前一状态
+	bool            m_bPreBodyReleaseSign;         //支撑解除标志   I67.1 前一状态
 
 	/*--------------------------------------------
 	 *about StatusList Parameters
@@ -736,6 +769,8 @@ public:
 	QFile			m_TestfileRecord2;
 	QTextStream		m_TestStreamRecord1;
 	QTextStream		m_TestStreamRecord2;
+	QFile			m_TestfileRecordData;//ligy 20200211 add 保存数据
+	QTextStream		m_TestStreamRecordData;
 	void			DataProcessTest_ReadSensorFile();
 	void			DataProcessTest_ReadMSFile();
 	void			DataProcessTest_WriteFileIni();
@@ -744,17 +779,27 @@ public:
 	void			DataProcessTest_QVector();
 	void			DataProcessTest_RingBuffer();
 
+	void			DataProcessTest_WriteSaveDataIni();//ligy 20200211 add 保存数据文件初始化
+	void			DataProcessTest_WriteSaveData();//ligy 20200211 add    写保存数据进文件
+	void			DataProcessTest_WriteSaveDataFini();//ligy 20200211 add 关闭保存数据文件
+
 public:
 	QFile			m_fileRecord;
+	QFile			m_fileLog;//ligy 20200212 add。日志文件
 	QFile			m_H_fileCutDepth;
 	QFile			m_V_fileCutDepth;
 	QTextStream		m_StreamRecord;
+	QTextStream		m_StreamLog;//ligy 20200212 add。日志文件流
 	QTextStream		m_H_StreamCutDepth;
 	QTextStream		m_V_StreamCutDepth;
 	QString			m_strfileRecord;
 	void			StartRecordData( );
 	void			RecordData( );
 	void			StopRecordData( );
+
+	void			StartLogData( );
+	void			StopLogData( );
+
 public:
 	void			SaveScanData( );
 public:

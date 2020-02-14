@@ -251,7 +251,7 @@ public:
 	QString m_strStateRepair;
 	///////////////////////////////////////////////
 	//about shine status ligy 20190928 add
-	///////////////////////////////////////////////
+	////////////////////////打磨状态///////////////////////
 	QString m_strStateShineUnkown;//未知
 	QString m_strStateShineWaiting;//打磨等待
 	QString m_strStateShineReady;//打磨准备
@@ -261,6 +261,58 @@ public:
 	QString m_strStateShineEnd;  //打磨结束
 	QString m_strStateShineUp;   //打磨上升
 	QString m_strStateShineEmgencyStop;   //打磨上升
+	//////////////////////保存参数/////////////////////////
+	QString m_strSaveDataParam1;
+	QString m_strSaveDataParam2;
+	QString m_strSaveDataParam3;
+	QString m_strSaveDataParam4;
+	QString m_strSaveDataParam5;
+	QString m_strSaveDataParam6;
+	QString m_strSaveDataParam7;
+	QString m_strSaveDataParam8;
+	QString m_strSaveDataParam9;
+	QString m_strSaveDataParam10;
+	QString m_strSaveDataParam11;
+	QString m_strSaveDataParam12;
+	QString m_strSaveDataParam13;
+	QString m_strSaveDataParam14;
+	QString m_strSaveDataParam15;
+	QString m_strSaveDataParam16;
+	QString m_strSaveDataParam17;
+	QString m_strSaveDataParam18;
+	QString m_strSaveDataParam19;
+	QString m_strSaveDataParam20;
+	QString m_strSaveDataParam21;
+	QString m_strSaveDataParam22;
+	QString m_strSaveDataParam23;
+	QString m_strSaveDataParam24;
+	QString m_strSaveDataParam25;
+	QString m_strSaveDataParam26;
+	QString m_strSaveDataParam27;
+
+	QString m_strLog_OperateTime;//操作时间
+	QString m_strLog_Operator;//操作人
+	QString m_strLog_OperateType;//操作类型
+
+	QString m_strLog_Login;//登陆
+	QString m_strLog_Logoff;//注销
+	QString m_strLog_SysParamSave;//系统参数保存
+	QString m_strLog_WorkParamSave;//作业参数保存
+	QString m_strLog_ScanParamSave;//轨廓扫描参数保存
+	QString m_strLog_BodyStart;//刚性支撑启动
+	QString m_strLog_BodyStop;//刚性支撑解除
+	QString m_strLog_HydraulicStart;//液压启动
+	QString m_strLog_HydraulicStop;//液压停止
+	QString m_strLog_ChipStart;//集屑启动
+	QString m_strLog_ChipStop;//集屑停止
+	QString m_strLog_SpeedWheelStart;//测速轮启动
+	QString m_strLog_SpeedWheelStop;//测速轮停止
+	QString m_strLog_StartTrain; //启动列车
+	QString m_strLog_StopTrain;	//停止列车
+	QString m_strLog_StartWork;	//开始作业
+	QString m_strLog_StopWork;	//停止作业
+	QString m_strLog_DeviceUp;	//装置上升
+	QString m_strLog_DeviceDown;//装置下降
 };
 
 #endif // OPERATEINI_H_INCLUDED

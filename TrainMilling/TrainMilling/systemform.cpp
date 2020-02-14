@@ -111,6 +111,14 @@ void SystemForm::onFunction (const QString& rsFunction,
 			setSoftkeyDisable(7, true);
 			setLineEditReadOnly(true);
 			setStatusBarElementText(readText("ok_Save","systemPara"),0);
+
+			if (g->m_bIsLogin)//ligy 20200213 add.添加日志 系统参数保存
+			{
+				g->m_StreamLog<<QDateTime::currentDateTime().toString("yyyy-MM-dd hh-mm-ss")
+					<<","<<g->m_strNowUserName
+					<<","<< g_pIni->m_strLog_SysParamSave <<endl;
+				g->m_StreamLog.flush();//ligy 20200213 add.
+			}	
 		}
 		rbHandled = true;
 	}

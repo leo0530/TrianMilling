@@ -173,6 +173,7 @@ GlobalData::GlobalData(void)
 	m_R_bCollectorBinState = true;
 	m_bCH1NCState = true;
 	m_bBogyState = true;
+	m_bPreBogyState = true;
 	m_bTrainCommState = true;
 	m_bPreTrainCommState = true;
 	m_bPcuCommState = true;
@@ -222,6 +223,22 @@ GlobalData::GlobalData(void)
 	m_RH_bSensorStatus2 = false;
 	m_RV_bSensorStatus1 = false;
 	m_RV_bSensorStatus2 = false;
+
+	//ligy 20200214 add.监控标志变量初始化
+	m_bCurStartTrainSign = false;
+	m_bCurStopTrainSign = false;
+	m_bCurStartWorkSign = false;
+	m_bCurStopWorkSign = false;
+	m_bCurDeviceUpSign = false;
+	m_bCurDeviceDownSign = false;
+	m_bCurHydraulicStartSign = false;
+	m_bCurHydraulicStopSign = false;
+	m_bCurChipStartSign = false;
+	m_bCurChipStopSign = false;
+	m_bCurSpeedWheelUpSign = false;
+	m_bCurSpeedWheelDownSign = false;
+	m_bCurBodySupportSign = false;
+	m_bCurBodyReleaseSign = false;
 
 	//m_strfileRecord = "..\\..\\..\\..\\oem\\sinumerik\\data\\trainmilling\\workrecord\\workrecord 2018-05-11 11-32-03 Operator.csv";
 	m_strfileRecord = "";
@@ -552,6 +569,7 @@ void GlobalData::DataProcessTest_WriteFileIni()
 	QString fileRecordPath2 = "..\\..\\..\\..\\oem\\sinumerik\\data\\trainmilling\\SensorData\\SensorData"+sDateTime+"_2.csv";
 	m_TestfileRecord1.setFileName(fileRecordPath1);
 	m_TestfileRecord2.setFileName(fileRecordPath2);
+	//ligy 20200210 add 打开文件
 	if(!m_TestfileRecord1.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
 	{
 		//qDebug()<<"OPEN FILE FAILED";  
@@ -564,6 +582,200 @@ void GlobalData::DataProcessTest_WriteFileIni()
 	m_TestStreamRecord2.setDevice(&m_TestfileRecord2);
 }
 
+void GlobalData::DataProcessTest_WriteSaveDataIni()//ligy 20200211 add 保存数据文件初始化
+{
+	QDateTime current_datetime = QDateTime::currentDateTime();
+	//QString sDateTime=current_datetime.toString("yyyy-MM-dd hh-mm-ss");
+	QString sDateTime=current_datetime.toString("yyyy-MM-dd");
+	QString fileRecordPath = "..\\..\\..\\..\\oem\\sinumerik\\data\\trainmilling\\SaveData\\"+sDateTime+".csv";
+	
+	//判断文件是否存在
+	bool bFileExist = false;
+	QFileInfo fi(fileRecordPath);
+	if (fi.isFile())//ligy 20200211 add.判断文件是否存在
+	{
+		bFileExist = true;
+	}
+
+	m_TestfileRecordData.setFileName(fileRecordPath);
+	//ligy 20200211 add 打开文件
+	if(!m_TestfileRecordData.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+	{
+		//qDebug()<<"OPEN FILE FAILED";  
+		return;
+	}
+
+	m_TestStreamRecordData.setDevice(&m_TestfileRecordData);
+
+	if (!bFileExist)//如果文件不存在就写入文件头
+	{
+		//写入文件头
+		m_TestStreamRecordData << g_pIni->m_strSaveDataParam1 
+			<<"," << g_pIni->m_strSaveDataParam2 //"当前阶段(主控制流程)" 
+			<<"," << g_pIni->m_strSaveDataParam3 //"当前阶段(作业流程)" 
+			<<"," << g_pIni->m_strSaveDataParam4 //"作业速度(左测速轮)" 
+			<<"," << g_pIni->m_strSaveDataParam5 //"作业速度(右测速轮)"
+			<<"," << g_pIni->m_strSaveDataParam6 //"作业位置(左测速轮)" 
+			<<"," << g_pIni->m_strSaveDataParam7 //"作业位置(右测速轮)"
+			<<"," << g_pIni->m_strSaveDataParam8 //"垂向传感器1值(左)"
+			<<"," << g_pIni->m_strSaveDataParam9 //"垂向传感器1值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam10 //"垂向传感器2值(左)"
+			<<"," << g_pIni->m_strSaveDataParam11 //"垂向传感器2值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam12 //"横向传感器1值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam13 //"横向传感器1值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam14 //"横向传感器2值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam15 //"横向传感器2值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam16 //"垂向电机值(左)"
+			<<"," << g_pIni->m_strSaveDataParam17 //"垂向电机值(右)"
+			<<"," << g_pIni->m_strSaveDataParam18 //"横向电机值(左)"
+			<<"," << g_pIni->m_strSaveDataParam19 //"横向电机值(右)"
+			<<"," << g_pIni->m_strSaveDataParam20 //"垂向目标值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam21 //"垂向目标值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam22 //"横向目标值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam23 //"横向目标值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam24 //"垂向软件靴值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam25 //"垂向软件靴值(右)" 
+			<<"," << g_pIni->m_strSaveDataParam26 //"横向软件靴值(左)" 
+			<<"," << g_pIni->m_strSaveDataParam27 //"横向软件靴值(右)" 
+			<<endl;
+		m_TestStreamRecordData.flush();
+	}
+
+}
+
+void GlobalData::DataProcessTest_WriteSaveData()//ligy 20200211 add 写需要存储的数据
+{
+	QDateTime current_date_time =QDateTime::currentDateTime();
+	QString current_date =current_date_time.toString("yyyy.MM.dd hh:mm:ss zzz");
+
+	QString plcWorkStatus;
+	//判断当前工作状态,主控制流程
+	switch(g->m_nPLCWorkState)
+	{
+	case PLC_WORKSTATE_WAITING:
+		plcWorkStatus = g_pIni->m_strStateWaiting;//作业等待
+		break;
+	case PLC_WORKSTATE_READY:
+		plcWorkStatus = g_pIni->m_strStateReady;//作业准备
+		break;
+	case PLC_WORKSTATE_SCAN:
+		plcWorkStatus = g_pIni->m_strStateScan;//轨廓扫描
+		break;
+	case PLC_WORKSTATE_LOADDOWN1:
+		plcWorkStatus = g_pIni->m_strStateLoadDown1;//装置下降1
+		break;
+	case PLC_WORKSTATE_STARTTRAIN1:
+		plcWorkStatus = g_pIni->m_strStateStartTrain1;//列车启动1
+		break;
+	case PLC_WORKSTATE_STARTTRAIN2:
+		plcWorkStatus = g_pIni->m_strStateStartTrain2;//列车启动2
+		break;
+	case PLC_WORKSTATE_STARTWORK:
+		plcWorkStatus = g_pIni->m_strStateStartWork;//铣削作业
+		break;
+	case PLC_WORKSTATE_STOPWORK:
+		plcWorkStatus = g_pIni->m_strStateStopWork;//作业停止
+		break;
+	case PLC_WORKSTATE_STOPTRAIN:
+		plcWorkStatus = g_pIni->m_strStateStopTrain;//列车停止
+		break;
+	case PLC_WORKSTATE_LOADDOWN2:
+		plcWorkStatus = g_pIni->m_strStateLoadDown2;//装置下降2
+		break;
+	case PLC_WORKSTATE_DEVICEUP:
+		plcWorkStatus = g_pIni->m_strStateDeviceUp;//装置上升
+		break;
+	case PLC_WORKSTATE_EMERGENCY:
+		plcWorkStatus = g_pIni->m_strStateEmergency;//紧急提升
+		break;
+	case PLC_WORKSTATE_REPAIR:
+		plcWorkStatus = g_pIni->m_strStateRepair;//检修
+		break;
+	default:
+		break;
+	}
+
+	QString workStatus;
+	switch(m_nWorkState)
+	{
+	case WORKSTATE_STARTFELLOW_INI:
+	case WORKSTATE_STARTFELLOW:
+		workStatus = "开始跟随";
+		break;
+	case WORKSTATE_ADJUST_INI:
+	case WORKSTATE_ADJUST :
+		workStatus = "";
+		break;
+	case WORKSTATE_YFELLOW_INI :
+	case WORKSTATE_YFELLOW  :
+		workStatus = "Y向跟随";
+		break;
+	case WORKSTATE_WORKIN_INI  :
+	case WORKSTATE_WORKIN   :
+		workStatus = "开始铣削";
+		break;
+	case WORKSTATE_CUTIN_INI   :
+	case WORKSTATE_CUTIN   :
+		workStatus = "顺坡切入";
+		break;
+	case WORKSTATE_MILLING_INI    :
+	case WORKSTATE_MILLING  :
+		workStatus = "铣削作业";
+		break;
+	case WORKSTATE_CUTOUT_INI     :
+	case WORKSTATE_CUTOUT  :
+		workStatus = "顺坡切出";
+		break;
+	case WORKSTATE_WORKOUT_INI      :
+	case WORKSTATE_WORKOUT   :
+		workStatus = "停止铣削";
+		break;
+	case WORKSTATE_YFELLOW2_INI       :
+	case WORKSTATE_YFELLOW2    :
+		workStatus = "停止Y向跟随";
+		break;
+	case WORKSTATE_ENDFELLOW_INI        :
+	case WORKSTATE_ENDFELLOW     :
+		workStatus = "停止跟随";
+		break;
+	case WORKSTATE_EMERGENCY_PCU        :
+	case WORKSTATE_EMERGENCY_PLC     :
+		workStatus = "急停";
+		break;
+	default:
+		workStatus = "";
+		break;
+	}
+	m_TestStreamRecordData << current_date               //当前时间
+		<<"," << workStatus                              //"当前阶段(主控制流程)" 
+		<<"," << plcWorkStatus                           //"当前阶段(作业流程)" 开始跟随等状态
+		<<"," << QString::number(g->m_L_SMWCurSpeed)     //"作业速度(左测速轮)" 
+		<<"," << QString::number(g->m_R_SMWCurSpeed)     //"作业速度(右测速轮)" 
+		<<"," << QString::number(g->m_L_SMWCurPos)       //"作业位置(左测速轮)" 
+		<<"," << QString::number(g->m_R_SMWCurPos)       //"作业位置(右测速轮)" 
+		<<"," << QString::number(g->m_LV_SensorCurValue1)//"垂向传感器1值(左)"  
+		<<"," << QString::number(g->m_RV_SensorCurValue1)//"垂向传感器1值(右)"  
+		<<"," << QString::number(g->m_LV_SensorCurValue2)//"垂向传感器2值(左)"  
+		<<"," << QString::number(g->m_RV_SensorCurValue2)//"垂向传感器2值(右)"  
+		<<"," << QString::number(g->m_LH_SensorCurValue1)//"横向传感器1值(左)"  
+		<<"," << QString::number(g->m_RH_SensorCurValue1)//"横向传感器1值(右)"  
+		<<"," << QString::number(g->m_LH_SensorCurValue2)//"横向传感器2值(左)"  
+		<<"," << QString::number(g->m_RH_SensorCurValue2)//"横向传感器2值(右)"  
+		<<"," << QString::number(g->m_LV_MotorCurPos)    //"垂向电机值(左)"     
+		<<"," << QString::number(g->m_RV_MotorCurPos)    //"垂向电机值(右)"     
+		<<"," << QString::number(g->m_LH_MotorCurPos)    //"横向电机值(左)"     
+		<<"," << QString::number(g->m_RH_MotorCurPos)    //"横向电机值(右)"     
+		<<"," << QString::number(g->m_LV_SensorDstValue) //"垂向目标值(左)"    
+		<<"," << QString::number(g->m_RV_SensorDstValue) //"垂向目标值(右)"     
+		<<"," << QString::number(g->m_LH_SensorDstValue) //"横向目标值(左)"     
+		<<"," << QString::number(g->m_RH_SensorDstValue) //"横向目标值(右)"     
+		<<"," << QString::number(g->m_LV_CurData.SensorValue)//"垂向软件靴值(左)"   
+		<<"," << QString::number(m_RV_CurData.SensorValue)   //"垂向软件靴值(右)"   
+		<<"," << QString::number(g->m_LH_CurData.SensorValue)//"横向软件靴值(左)"   
+		<<"," << QString::number(g->m_RH_CurData.SensorValue)//"横向软件靴值(右)"   
+		<<endl;
+	m_TestStreamRecordData.flush();
+}
 void GlobalData::DataProcessTest_WriteFile()
 {
 	QDateTime current_date_time =QDateTime::currentDateTime();
@@ -640,8 +852,15 @@ void GlobalData::DataProcessTest_WriteFile()
 
 void GlobalData::DataProcessTest_WriteFileFini()
 {
+	//ligy 20200210 add 关闭文件
 	m_TestfileRecord1.close();
 	m_TestfileRecord2.close();
+}
+
+void GlobalData::DataProcessTest_WriteSaveDataFini()
+{
+	//ligy 20200211 add 关闭文件
+	m_TestfileRecordData.close();
 }
 
 void GlobalData::PushDataToBuf( )
@@ -1449,6 +1668,13 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	}
 	if( (IsROverEndPowered( ) == true) ||  (IsROverLiftPowered( ) == true) )//右铣削单元最大功率、峰值功率是否超范围
 	{
+		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //ligy 20200211 add  写需要保存的数据到文件
+		}
+
 		m_RH_Error |= REPORT_7_ERR;
 		SetPCUWorkState(WORKSTATE_EMERGENCY_PCU);
 		eError = EmergencyStopProc( WORKSTATE_EMERGENCY_PCU );
@@ -1458,6 +1684,11 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_STARTFELLOW_INI || m_nWorkState == WORKSTATE_STARTFELLOW )
 	{	
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //ligy 20200211 add  写需要保存的数据到文件
+		}
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_STARTFELLOW_INI )
 		{
@@ -1496,6 +1727,11 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_ADJUST_INI || m_nWorkState == WORKSTATE_ADJUST )
 	{	
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_ADJUST_INI )
 		{
@@ -1534,6 +1770,10 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_YFELLOW_INI || m_nWorkState == WORKSTATE_YFELLOW )//Y向跟随
 	{	
 		bool bIniFlag = false;
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_YFELLOW_INI )
 		{
@@ -1567,6 +1807,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_WORKIN_INI || m_nWorkState == WORKSTATE_WORKIN )//作业状态
 	{
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( (m_nWorkState == WORKSTATE_WORKIN_INI) && IsStateActionOver(WORKSTATE_YFELLOW) )
 		{
@@ -1605,6 +1851,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_CUTIN_INI || m_nWorkState == WORKSTATE_CUTIN)//顺坡切入
 	{
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_CUTIN_INI )
 		{
@@ -1643,6 +1895,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if(m_nWorkState == WORKSTATE_MILLING_INI || m_nWorkState == WORKSTATE_MILLING)
 	{
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_MILLING_INI )
 		{
@@ -1683,6 +1941,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_CUTOUT_INI || m_nWorkState == WORKSTATE_CUTOUT )
 	{
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_CUTOUT_INI && IsStateActionOver(WORKSTATE_MILLING)  )
 		{
@@ -1721,6 +1985,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_WORKOUT_INI || m_nWorkState == WORKSTATE_WORKOUT )
 	{	
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_WORKOUT_INI )
 		{
@@ -1759,6 +2029,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_YFELLOW2_INI || m_nWorkState == WORKSTATE_YFELLOW2 )
 	{	
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_YFELLOW2_INI )
 		{
@@ -1792,6 +2068,12 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	else if( m_nWorkState == WORKSTATE_ENDFELLOW_INI || m_nWorkState == WORKSTATE_ENDFELLOW )
 	{	
 		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		//Step1:--------------Initialize--------------
 		if( m_nWorkState == WORKSTATE_ENDFELLOW_INI  && IsStateActionOver(WORKSTATE_YFELLOW2) )
 		{
@@ -1858,6 +2140,14 @@ SlCapErrorEnum GlobalData::TrainMillingProc( ) //铣磨车工作过程 ligy 20190904 ad
 	//10th mode:Emergency Stop
 	if( m_nWorkState == WORKSTATE_EMERGENCY_PCU || m_nWorkState == WORKSTATE_EMERGENCY_PLC )
 	{
+		bool bIniFlag = false;
+
+		if (!bIniFlag)
+		{
+			bIniFlag = true;
+			DataProcessTest_WriteSaveData();   //写需要保存的数据到文件 ligy 20200211 add
+		}
+
 		eError = EmergencyStopProc( m_nWorkState );
 	}
 
@@ -3370,6 +3660,59 @@ SlCapErrorEnum GlobalData::EmergencyStopProc( int nWorkState )
 	return nError;
 }
 
+void GlobalData::StartLogData( )//ligy 20200212 add.日志文件
+{
+	QDateTime current_datetime = QDateTime::currentDateTime();
+	QString sDateTime=current_datetime.toString("yyyy-MM-dd");
+	QString fileRecordPath = "..\\..\\..\\..\\oem\\sinumerik\\data\\trainmilling\\LogData\\"+QString("Log")+sDateTime+".csv";
+	m_fileLog.setFileName(fileRecordPath);
+	
+	QFileInfo fi(fileRecordPath);
+	bool bFileExist = false;
+
+	if (fi.isFile())//判断文件是否存在
+	{
+		bFileExist = true;
+	}
+	
+	if(!m_fileLog.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+	{
+		//qDebug()<<"OPEN FILE FAILED";  
+	}
+
+	m_StreamLog.setDevice(&m_fileLog);
+
+	if (!bFileExist)
+	{
+		//写文件头
+		m_StreamLog << g_pIni->m_strLog_OperateTime //操作时间
+			<<"," << g_pIni->m_strLog_Operator      //操作人
+			<<","<<g_pIni->m_strLog_OperateType     //操作内容
+			<<endl;
+		m_StreamLog.flush();
+	}
+	
+    //test code
+	//m_StreamLog <<sDateTime
+	//	<<","<<g_pIni->m_strLog_BodyStart
+	//	<<","<<g_pIni->m_strLog_BodyStop
+	//	<<","<<g_pIni->m_strLog_HydraulicStart
+	//	<<","<<g_pIni->m_strLog_HydraulicStop
+	//	<<","<<g_pIni->m_strLog_ChipStart
+	//	<<","<<g_pIni->m_strLog_ChipStop
+	//	<<","<<g_pIni->m_strLog_SpeedWheelStart
+	//	<<","<<g_pIni->m_strLog_SpeedWheelStop
+	//	<<","<<g_pIni->m_strLog_StartTrain
+	//	<<","<<g_pIni->m_strLog_StopTrain
+	//	<<","<<g_pIni->m_strLog_StartWork
+	//	<<","<<g_pIni->m_strLog_StopWork
+	//	<<","<<g_pIni->m_strLog_DeviceUp
+	//	<<","<<g_pIni->m_strLog_DeviceDown
+	//	<<endl;
+	//m_StreamLog.flush();
+	
+}
+
 void GlobalData::StartRecordData( )
 {
 	QDateTime current_datetime = QDateTime::currentDateTime();
@@ -3561,6 +3904,10 @@ void GlobalData::RecordData( )
 	m_StreamRecord.flush();
 }
 
+void GlobalData::StopLogData( )//ligy 20200212 add.关闭日志文件
+{
+	m_fileLog.close();
+}
 void GlobalData::StopRecordData( )
 {
 	m_fileRecord.close();
@@ -4419,7 +4766,20 @@ void GlobalData::DeviceLockStateProc( )
 	if(!m_bLockState0 && !m_bLockState1)
 		TcuSetDeviceLockState(false);*/
 }
+//判断两个浮点数 是否相等
+bool GlobalData::isEqualFloat(double a,double b)
+{
+#define EPSILON 0.000001 //根据精度需要  
+	if (fabs(a - b) < EPSILON)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 
+}
 void GlobalData::DeviceHighStateProc( )
 {
 	/*if(g->m_L_bHighSignal && g->m_R_bHighSignal)

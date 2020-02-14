@@ -326,7 +326,30 @@
 #define ENTRY_SHINESTATE_START	    "/ShineState/State_StartShine"
 #define ENTRY_SHINESTATE_END	    "/ShineState/State_EndShine"
 #define ENTRY_SHINESTATE_UP	        "/ShineState/State_ShineUp"
-#define ENTRY_SHINESTATE_EMGENCYSTOP	        "/ShineState/State_ShineStop"
+#define ENTRY_SHINESTATE_EMGENCYSTOP "/ShineState/State_ShineStop"
+//------------------------log status---------------------------------------//
+#define ENTRY_LOG_OPERATETIME        "/Log/OperateTime"
+#define ENTRY_LOG_OPERATOR           "/Log/Operator"
+#define ENTRY_LOG_OPERATETYPE        "/Log/OperateType"
+#define ENTRY_LOG_LOGIN              "/Log/Login"
+#define ENTRY_LOG_LOGOFF             "/Log/LogOff"
+#define ENTRY_LOG_SYSPARAMSAVE       "/Log/SysParameterSave"
+#define ENTRY_LOG_WORKPARAMSAVE      "/Log/WorkParameterSave"
+#define ENTRY_LOG_SCANPARAMSAVE      "/Log/ScanParameterSave"
+#define ENTRY_LOG_BODYSTART          "/Log/BodyStart"
+#define ENTRY_LOG_BODYSTOP           "/Log/BodyStop"
+#define ENTRY_LOG_HYDRAULICSTART     "/Log/HydraulicStart"
+#define ENTRY_LOG_HYDRAULICSTOP      "/Log/HydraulicStop"
+#define ENTRY_LOG_CHIPSTART          "/Log/ChipStart"
+#define ENTRY_LOG_CHIPSTOP           "/Log/ChipStop"
+#define ENTRY_LOG_SPEEDWHEELSTART    "/Log/SpeedWheelStart"
+#define ENTRY_LOG_SPEEDWHEELSTOP     "/Log/SpeedWheelStop"
+#define ENTRY_LOG_STARTTRAIN         "/Log/StartTrain"
+#define ENTRY_LOG_STOPTRAIN          "/Log/StopTrain"
+#define ENTRY_LOG_STARTWORK          "/Log/StartWork"
+#define ENTRY_LOG_STOPWORK           "/Log/StopWork"
+#define ENTRY_LOG_DEVICEUP           "/Log/DeviceUp"
+#define ENTRY_LOG_DEVICEDOWN         "/Log/DeviceDown"
 
 OperateIni::OperateIni(void)
 {	
@@ -1004,6 +1027,111 @@ void OperateIni::ReadShineStateParameters()//ligy 20190928 add
 	m_strStateShineUp = m_pcodec->toUnicode(byteArray);
 	byteArray = m_pconfigIniRead->value(ENTRY_SHINESTATE_EMGENCYSTOP).toByteArray();
 	m_strStateShineEmgencyStop = m_pcodec->toUnicode(byteArray);//打磨急停
+
+	//ligy 20200212 add.保存参数
+	byteArray = m_pconfigIniRead->value("/SaveData/Data1").toByteArray();
+	m_strSaveDataParam1 = m_pcodec->toUnicode(byteArray);//保存参数1
+	byteArray = m_pconfigIniRead->value("/SaveData/Data2").toByteArray();
+	m_strSaveDataParam2 = m_pcodec->toUnicode(byteArray);//保存参数2
+	byteArray = m_pconfigIniRead->value("/SaveData/Data3").toByteArray();
+	m_strSaveDataParam3 = m_pcodec->toUnicode(byteArray);//保存参数3
+	byteArray = m_pconfigIniRead->value("/SaveData/Data4").toByteArray();
+	m_strSaveDataParam4 = m_pcodec->toUnicode(byteArray);//保存参数4
+	byteArray = m_pconfigIniRead->value("/SaveData/Data5").toByteArray();
+	m_strSaveDataParam5 = m_pcodec->toUnicode(byteArray);//保存参数5
+	byteArray = m_pconfigIniRead->value("/SaveData/Data6").toByteArray();
+	m_strSaveDataParam6 = m_pcodec->toUnicode(byteArray);//保存参数6
+	byteArray = m_pconfigIniRead->value("/SaveData/Data7").toByteArray();
+	m_strSaveDataParam7 = m_pcodec->toUnicode(byteArray);//保存参数7
+	byteArray = m_pconfigIniRead->value("/SaveData/Data8").toByteArray();
+	m_strSaveDataParam8 = m_pcodec->toUnicode(byteArray);//保存参数8
+	byteArray = m_pconfigIniRead->value("/SaveData/Data9").toByteArray();
+	m_strSaveDataParam9 = m_pcodec->toUnicode(byteArray);//保存参数9
+	byteArray = m_pconfigIniRead->value("/SaveData/Data10").toByteArray();
+	m_strSaveDataParam10 = m_pcodec->toUnicode(byteArray);//保存参数10
+	byteArray = m_pconfigIniRead->value("/SaveData/Data11").toByteArray();
+	m_strSaveDataParam11 = m_pcodec->toUnicode(byteArray);//保存参数11
+	byteArray = m_pconfigIniRead->value("/SaveData/Data12").toByteArray();
+	m_strSaveDataParam12 = m_pcodec->toUnicode(byteArray);//保存参数12
+	byteArray = m_pconfigIniRead->value("/SaveData/Data13").toByteArray();
+	m_strSaveDataParam13 = m_pcodec->toUnicode(byteArray);//保存参数13
+	byteArray = m_pconfigIniRead->value("/SaveData/Data14").toByteArray();
+	m_strSaveDataParam14 = m_pcodec->toUnicode(byteArray);//保存参数14
+	byteArray = m_pconfigIniRead->value("/SaveData/Data15").toByteArray();
+	m_strSaveDataParam15 = m_pcodec->toUnicode(byteArray);//保存参数15
+	byteArray = m_pconfigIniRead->value("/SaveData/Data16").toByteArray();
+	m_strSaveDataParam16 = m_pcodec->toUnicode(byteArray);//保存参数16
+	byteArray = m_pconfigIniRead->value("/SaveData/Data17").toByteArray();
+	m_strSaveDataParam17 = m_pcodec->toUnicode(byteArray);//保存参数17
+	byteArray = m_pconfigIniRead->value("/SaveData/Data18").toByteArray();
+	m_strSaveDataParam18 = m_pcodec->toUnicode(byteArray);//保存参数18
+	byteArray = m_pconfigIniRead->value("/SaveData/Data19").toByteArray();
+	m_strSaveDataParam19 = m_pcodec->toUnicode(byteArray);//保存参数19
+	byteArray = m_pconfigIniRead->value("/SaveData/Data20").toByteArray();
+	m_strSaveDataParam20 = m_pcodec->toUnicode(byteArray);//保存参数20
+	byteArray = m_pconfigIniRead->value("/SaveData/Data21").toByteArray();
+	m_strSaveDataParam21 = m_pcodec->toUnicode(byteArray);//保存参数21
+	byteArray = m_pconfigIniRead->value("/SaveData/Data22").toByteArray();
+	m_strSaveDataParam22 = m_pcodec->toUnicode(byteArray);//保存参数22
+	byteArray = m_pconfigIniRead->value("/SaveData/Data23").toByteArray();
+	m_strSaveDataParam23 = m_pcodec->toUnicode(byteArray);//保存参数23
+	byteArray = m_pconfigIniRead->value("/SaveData/Data24").toByteArray();
+	m_strSaveDataParam24 = m_pcodec->toUnicode(byteArray);//保存参数24
+	byteArray = m_pconfigIniRead->value("/SaveData/Data25").toByteArray();
+	m_strSaveDataParam25 = m_pcodec->toUnicode(byteArray);//保存参数25
+	byteArray = m_pconfigIniRead->value("/SaveData/Data26").toByteArray();
+	m_strSaveDataParam26 = m_pcodec->toUnicode(byteArray);//保存参数26
+	byteArray = m_pconfigIniRead->value("/SaveData/Data27").toByteArray();
+	m_strSaveDataParam27 = m_pcodec->toUnicode(byteArray);//保存参数27
+
+	//日志
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_OPERATETIME).toByteArray();
+	m_strLog_OperateTime = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_OPERATOR).toByteArray();
+	m_strLog_Operator = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_OPERATETYPE).toByteArray();
+	m_strLog_OperateType = m_pcodec->toUnicode(byteArray);//
+
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_LOGIN).toByteArray();
+	m_strLog_Login = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_LOGOFF).toByteArray();
+	m_strLog_Logoff = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_SYSPARAMSAVE).toByteArray();
+	m_strLog_SysParamSave = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_WORKPARAMSAVE).toByteArray();
+	m_strLog_WorkParamSave = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_SCANPARAMSAVE).toByteArray();
+	m_strLog_ScanParamSave = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_BODYSTART).toByteArray();
+	m_strLog_BodyStart = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_BODYSTOP).toByteArray();
+	m_strLog_BodyStop = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_HYDRAULICSTART).toByteArray();
+	m_strLog_HydraulicStart = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_HYDRAULICSTOP).toByteArray();
+	m_strLog_HydraulicStop = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_CHIPSTART).toByteArray();
+	m_strLog_ChipStart = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_CHIPSTOP).toByteArray();
+	m_strLog_ChipStop = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_SPEEDWHEELSTART).toByteArray();
+	m_strLog_SpeedWheelStart = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_SPEEDWHEELSTOP).toByteArray();
+	m_strLog_SpeedWheelStop = m_pcodec->toUnicode(byteArray);//
+	//ligy 20200214 add.启动列车等文本翻译
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_STARTTRAIN).toByteArray();
+	m_strLog_StartTrain = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_STOPTRAIN).toByteArray();
+	m_strLog_StopTrain= m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_STARTWORK).toByteArray();
+	m_strLog_StartWork = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_STOPWORK).toByteArray();
+	m_strLog_StopWork = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_DEVICEUP).toByteArray();
+	m_strLog_DeviceUp = m_pcodec->toUnicode(byteArray);//
+	byteArray = m_pconfigIniRead->value(ENTRY_LOG_DEVICEDOWN).toByteArray();
+	m_strLog_DeviceDown = m_pcodec->toUnicode(byteArray);//
+	
 }
 void OperateIni::ReadWorkStateParameters()
 {
